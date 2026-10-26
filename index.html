@@ -224,14 +224,14 @@
           <div class="orbit orbit-two"></div>
 
           <div class="ai-core">
-            <!-- Clickable Profile Photo without any camera icon overlay -->
-            <div class="profile-photo" style="cursor: pointer;" onclick="document.getElementById('profile-upload').click();" title="Click to change profile picture">
-              <img id="profile-img" src="imges/profile.jpg" alt="Ajay Sakle"
-                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <!-- Dynamic Profile Photo (Click to upload from Mobile or System) -->
+            <div class="profile-photo" onclick="document.getElementById('profile-file-input').click()" style="cursor: pointer;" title="Click to change profile picture">
+              <img id="profile-img" src="imges/aj.img.jpeg" alt="Ajay Sakle"
+                   onerror="this.parentElement.classList.add('no-photo');this.remove()" />
               <span class="profile-initials">AS</span>
             </div>
-            <!-- Hidden file input triggered when clicking the photo -->
-            <input type="file" id="profile-upload" accept="image/*" style="display: none;" onchange="previewProfileImage(event)" />
+            <!-- Hidden file input for mobile/desktop upload -->
+            <input type="file" id="profile-file-input" accept="image/*" style="display: none;" onchange="previewProfileImage(event)" />
           </div>
 
           <div class="floating-chip chip-one">
@@ -435,69 +435,66 @@
         <div class="experience-list">
 
           <div class="experience-row">
-<!-- AGENTIC CHATBOT -->
 
-          <article class="project-card glass-card reveal">
+            <article class="experience-card glass-card reveal reveal-left">
 
-            <div class="project-image">
+              <div class="card-title">
 
-              <img class="project-shot" src="imges/agentic-chatbot.jpg" alt="Agentic Chatbot screenshot" loading="lazy" onerror="this.remove()" />
+                <h3>Gen AI Engineer Trainee</h3>
 
-              <div class="project-icon">
-                <i class="fa-solid fa-robot"></i>
+                <span class="current">
+                  Jun 2026 — Present
+                </span>
+
               </div>
 
-            </div>
+              <h4>
+                Dr Reddy Foundation · Indore, M.P.
+              </h4>
 
-            <div class="project-copy">
+              <p class="strong-copy">
+                Working on Generative AI concepts and hands-on projects
+                involving LLMs, prompt engineering, RAG pipelines and
+                AI-powered applications.
+              </p>
 
-              <h3>
-                Agentic Chatbot
-              </h3>
+              <ul>
+
+                <li>
+                  Learning and implementing Large Language Models,
+                  Prompt Engineering and Retrieval-Augmented Generation.
+                </li>
+
+                <li>
+                  Building AI chatbots and automation workflows using
+                  Python, APIs and modern AI frameworks.
+                </li>
+
+                <li>
+                  Developing practical projects focused on
+                  problem-solving, analysis and AI business applications.
+                </li>
+
+                <li>
+                  Exploring backend development, Docker, deployment,
+                  GitHub and CI/CD workflows for AI applications.
+                </li>
+
+              </ul>
 
               <div class="tag-list">
 
                 <span>Python</span>
-                <span>LangGraph</span>
+                <span>Generative AI</span>
+                <span>LLMs</span>
+                <span>RAG</span>
+                <span>LangChain</span>
                 <span>FastAPI</span>
-                <span>Streamlit</span>
-                <span>Docker</span>
 
               </div>
 
-              <p>
-                Tool-using AI chatbot built with LangGraph and FastAPI.
-                The system can route user requests, maintain conversation
-                state and use tools such as calculator, time and weather.
-              </p>
+            </article>
 
-              <div class="project-actions">
-
-                <a
-                  class="button button-primary"
-                  href="https://agentic-chatbot-a6l0.onrender.com"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  Live Demo
-                </a>
-
-                <a
-                  class="button button-outline"
-                  href="https://github.com/Ajaysakle721"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i class="fa-brands fa-github"></i>
-                  View Code
-                </a>
-
-              </div>
-
-            </div>
-
-          </article>
 
             <div class="experience-art reveal reveal-right">
 
@@ -544,7 +541,7 @@
 
             <div class="project-image">
 
-              <img class="project-shot" src="imges/rag-assistant.jpg" alt="RAG Knowledge Assistant screenshot" loading="lazy" onerror="this.remove()" />
+              <img class="project-shot" src="images/rag-assistant.jpg" alt="RAG Knowledge Assistant screenshot" loading="lazy" onerror="this.remove()" />
 
               <div class="project-icon">
                 <i class="fa-solid fa-book-open"></i>
@@ -610,7 +607,7 @@
 
             <div class="project-image">
 
-              <img class="project-shot" src="imges/agentic-chatbot.jpg" alt="Agentic Chatbot screenshot" loading="lazy" onerror="this.remove()" />
+              <img class="project-shot" src="images/agentic-chatbot.jpg" alt="Agentic Chatbot screenshot" loading="lazy" onerror="this.remove()" />
 
               <div class="project-icon">
                 <i class="fa-solid fa-robot"></i>
@@ -643,6 +640,16 @@
               <div class="project-actions">
 
                 <a
+                  class="button button-primary"
+                  href="https://agentic-chatbot-a6l0.onrender.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Live Demo
+                </a>
+
+                <a
                   class="button button-outline"
                   href="https://github.com/Ajaysakle721"
                   target="_blank"
@@ -665,7 +672,7 @@
 
             <div class="project-image">
 
-              <img class="project-shot" src="imges/health-portal.jpg" alt="Smart Health Report Portal screenshot" loading="lazy" onerror="this.remove()" />
+              <img class="project-shot" src="images/health-portal.jpg" alt="Smart Health Report Portal screenshot" loading="lazy" onerror="this.remove()" />
 
               <div class="project-icon">
                 <i class="fa-solid fa-file-medical"></i>
@@ -1095,26 +1102,51 @@
   </button>
 
 
-  <!-- JavaScript for Profile Picture Upload Preview -->
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
+  <!-- Dynamic Mobile/System Profile Photo Upload Script -->
   <script>
+    // Load saved profile photo from browser memory on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedImage = localStorage.getItem('profilePhoto');
+      if (savedImage) {
+        const img = document.getElementById('profile-img');
+        if (img) {
+          img.src = savedImage;
+          img.style.display = 'block';
+          const initials = document.querySelector('.profile-initials');
+          if (initials) initials.style.display = 'none';
+        }
+      }
+    });
+
+    // Handle profile photo selection from mobile or system
     function previewProfileImage(event) {
       const file = event.target.files[0];
       if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
+          const base64Image = e.target.result;
           const img = document.getElementById('profile-img');
-          img.src = e.target.result;
-          img.style.display = 'block';
+          if (img) {
+            img.src = base64Image;
+            img.style.display = 'block';
+          }
           const initials = document.querySelector('.profile-initials');
-          if(initials) initials.style.display = 'none';
-        }
+          if (initials) initials.style.display = 'none';
+
+          // Save to browser localStorage so it remains stored on mobile/system
+          try {
+            localStorage.setItem('profilePhoto', base64Image);
+          } catch (err) {
+            console.warn('Image file is too large for local storage', err);
+          }
+        };
         reader.readAsDataURL(file);
       }
     }
   </script>
-
-  <!-- JavaScript -->
-  <script src="script.js"></script>
 
 </body>
 
