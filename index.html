@@ -224,18 +224,14 @@
           <div class="orbit orbit-two"></div>
 
           <div class="ai-core">
-            <!-- Profile photo with Upload Button -->
-            <div class="profile-photo" style="position: relative; overflow: hidden; border-radius: 50%;">
+            <!-- Clickable Profile Photo without any camera icon overlay -->
+            <div class="profile-photo" style="cursor: pointer;" onclick="document.getElementById('profile-upload').click();" title="Click to change profile picture">
               <img id="profile-img" src="imges/profile.jpg" alt="Ajay Sakle"
                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
               <span class="profile-initials">AS</span>
-              
-              <!-- Photo Upload Button Overlay -->
-              <label for="profile-upload" class="upload-btn-overlay" title="Upload Profile Picture" style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.65); padding: 8px 0; text-align: center; cursor: pointer; color: #fff; font-size: 14px; transition: background 0.3s ease;">
-                <i class="fa-solid fa-camera"></i>
-                <input type="file" id="profile-upload" accept="image/*" style="display: none;" onchange="previewProfileImage(event)" />
-              </label>
             </div>
+            <!-- Hidden file input triggered when clicking the photo -->
+            <input type="file" id="profile-upload" accept="image/*" style="display: none;" onchange="previewProfileImage(event)" />
           </div>
 
           <div class="floating-chip chip-one">
