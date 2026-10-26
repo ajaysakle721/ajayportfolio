@@ -224,14 +224,8 @@
           <div class="orbit orbit-two"></div>
 
           <div class="ai-core">
-            <!-- Dynamic Profile Photo (Click to upload from Mobile or System) -->
-            <div class="profile-photo" onclick="document.getElementById('profile-file-input').click()" style="cursor: pointer;" title="Click to change profile picture">
-              <img id="profile-img" src="imges/aj.img.jpeg" alt="Ajay Sakle"
-                   onerror="this.parentElement.classList.add('no-photo');this.remove()" />
-              <span class="profile-initials">AS</span>
-            </div>
-            <!-- Hidden file input for mobile/desktop upload -->
-            <input type="file" id="profile-file-input" accept="image/*" style="display: none;" onchange="previewProfileImage(event)" />
+            <!-- Simple profile photo without interactive click feature -->
+            <img src="images/profile.jpg" alt="Ajay Sakle" class="profile-photo" />
           </div>
 
           <div class="floating-chip chip-one">
@@ -453,9 +447,7 @@
               </h4>
 
               <p class="strong-copy">
-                Working on Generative AI concepts and hands-on projects
-                involving LLMs, prompt engineering, RAG pipelines and
-                AI-powered applications.
+                Working on Generative AI concepts involving LLMs, prompt engineering, RAG pipelines and AI-powered applications.
               </p>
 
               <ul>
@@ -468,11 +460,6 @@
                 <li>
                   Building AI chatbots and automation workflows using
                   Python, APIs and modern AI frameworks.
-                </li>
-
-                <li>
-                  Developing practical projects focused on
-                  problem-solving, analysis and AI business applications.
                 </li>
 
                 <li>
@@ -638,16 +625,6 @@
               </p>
 
               <div class="project-actions">
-
-                <a
-                  class="button button-primary"
-                  href="https://agentic-chatbot-a6l0.onrender.com"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  Live Demo
-                </a>
 
                 <a
                   class="button button-outline"
@@ -1103,50 +1080,8 @@
 
 
   <!-- JavaScript -->
+
   <script src="script.js"></script>
-
-  <!-- Dynamic Mobile/System Profile Photo Upload Script -->
-  <script>
-    // Load saved profile photo from browser memory on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedImage = localStorage.getItem('profilePhoto');
-      if (savedImage) {
-        const img = document.getElementById('profile-img');
-        if (img) {
-          img.src = savedImage;
-          img.style.display = 'block';
-          const initials = document.querySelector('.profile-initials');
-          if (initials) initials.style.display = 'none';
-        }
-      }
-    });
-
-    // Handle profile photo selection from mobile or system
-    function previewProfileImage(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const base64Image = e.target.result;
-          const img = document.getElementById('profile-img');
-          if (img) {
-            img.src = base64Image;
-            img.style.display = 'block';
-          }
-          const initials = document.querySelector('.profile-initials');
-          if (initials) initials.style.display = 'none';
-
-          // Save to browser localStorage so it remains stored on mobile/system
-          try {
-            localStorage.setItem('profilePhoto', base64Image);
-          } catch (err) {
-            console.warn('Image file is too large for local storage', err);
-          }
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-  </script>
 
 </body>
 
