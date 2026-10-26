@@ -162,7 +162,7 @@
 
       <div class="container hero-grid">
 
-        <div class="hero-copy reveal reveal-left visible">
+        <div class="hero-copy reveal reveal-right visible">
 
           <div class="status-badge">
             <span class="glow-dot"></span>
@@ -216,7 +216,7 @@
         </div>
 
 
-        <div class="hero-visual reveal reveal-right visible">
+        <div class="hero-visual reveal reveal-left visible">
 
           <div class="visual-grid"></div>
 
@@ -224,11 +224,17 @@
           <div class="orbit orbit-two"></div>
 
           <div class="ai-core">
-            <!-- Apni photo: images/profile.jpg naam se images folder me rakho -->
-            <div class="profile-photo">
-              <img src="images/profile.jpg" alt="Ajay Sakle"
-                   onerror="this.parentElement.classList.add('no-photo');this.remove()" />
+            <!-- Profile photo with Upload Button -->
+            <div class="profile-photo" style="position: relative; overflow: hidden; border-radius: 50%;">
+              <img id="profile-img" src="imges/profile.jpg" alt="Ajay Sakle"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
               <span class="profile-initials">AS</span>
+              
+              <!-- Photo Upload Button Overlay -->
+              <label for="profile-upload" class="upload-btn-overlay" title="Upload Profile Picture" style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.65); padding: 8px 0; text-align: center; cursor: pointer; color: #fff; font-size: 14px; transition: background 0.3s ease;">
+                <i class="fa-solid fa-camera"></i>
+                <input type="file" id="profile-upload" accept="image/*" style="display: none;" onchange="previewProfileImage(event)" />
+              </label>
             </div>
           </div>
 
@@ -539,7 +545,7 @@
 
             <div class="project-image">
 
-              <img class="project-shot" src="images/rag-assistant.jpg" alt="RAG Knowledge Assistant screenshot" loading="lazy" onerror="this.remove()" />
+              <img class="project-shot" src="imges/rag-assistant.jpg" alt="RAG Knowledge Assistant screenshot" loading="lazy" onerror="this.remove()" />
 
               <div class="project-icon">
                 <i class="fa-solid fa-book-open"></i>
@@ -574,7 +580,7 @@
 
                 <a
                   class="button button-primary"
-                  href="https://ragproject-5tkzbbpwbmxarwxve6ryu3.streamlit.app/"
+                  href="https://rag-project-i3xj.onrender.com"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -584,7 +590,7 @@
 
                 <a
                   class="button button-outline"
-                  href="https://github.com/ajaysakle721/rag_proj"
+                  href="https://github.com/Ajaysakle721/rag_project"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -605,7 +611,7 @@
 
             <div class="project-image">
 
-              <img class="project-shot" src="images/agentic-chatbot.jpg" alt="Agentic Chatbot screenshot" loading="lazy" onerror="this.remove()" />
+              <img class="project-shot" src="imges/agentic-chatbot.jpg" alt="Agentic Chatbot screenshot" loading="lazy" onerror="this.remove()" />
 
               <div class="project-icon">
                 <i class="fa-solid fa-robot"></i>
@@ -636,19 +642,64 @@
               </p>
 
               <div class="project-actions">
-                <a
-                  class="button button-primary"
-                  href="https://agentic-chatbot-a6l0.onrender.com"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  Live Demo
-                </a>
 
                 <a
                   class="button button-outline"
-                  href="https://github.com/ajaysakle721/agentic_chatbot"
+                  href="https://github.com/Ajaysakle721"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i class="fa-brands fa-github"></i>
+                  View Code
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- AI HEALTH PROJECT -->
+
+          <article class="project-card glass-card reveal">
+
+            <div class="project-image">
+
+              <img class="project-shot" src="imges/health-portal.jpg" alt="Smart Health Report Portal screenshot" loading="lazy" onerror="this.remove()" />
+
+              <div class="project-icon">
+                <i class="fa-solid fa-file-medical"></i>
+              </div>
+
+            </div>
+
+            <div class="project-copy">
+
+              <h3>
+                Smart Health Report Portal
+              </h3>
+
+              <div class="tag-list">
+
+                <span>Python</span>
+                <span>AI</span>
+                <span>Web App</span>
+                <span>Dashboard</span>
+
+              </div>
+
+              <p>
+                Web-based health report and record portal designed to
+                organize health information and provide a simple
+                dashboard experience.
+              </p>
+
+              <div class="project-actions">
+
+                <a
+                  class="button button-outline"
+                  href="https://github.com/Ajaysakle721"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -1045,8 +1096,25 @@
   </button>
 
 
-  <!-- JavaScript -->
+  <!-- JavaScript for Profile Picture Upload Preview -->
+  <script>
+    function previewProfileImage(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.getElementById('profile-img');
+          img.src = e.target.result;
+          img.style.display = 'block';
+          const initials = document.querySelector('.profile-initials');
+          if(initials) initials.style.display = 'none';
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
 
+  <!-- JavaScript -->
   <script src="script.js"></script>
 
 </body>
