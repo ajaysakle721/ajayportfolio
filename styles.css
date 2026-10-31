@@ -1852,297 +1852,81 @@ html[data-theme="light"] .skill-card img[src*="simpleicons"] { filter: none; }
 }
 
 
-/* =========================================================
-   MOBILE RESPONSIVENESS PATCH
-   Added after the existing styles so these rules take priority.
-   ========================================================= */
-
-html, body {
-  max-width: 100%;
-  overflow-x: clip;
+/* ---------- Final fixes: profile image + tighter section spacing ---------- */
+.hero {
+  min-height: auto;
+  padding: calc(var(--header-height) + 42px) 0 24px;
 }
-
-.container,
-.hero-grid,
-.about-grid,
-.experience-row,
-.project-card,
-.education-grid,
-.contact-grid,
-.footer-grid {
-  min-width: 0;
+.hero-grid {
+  min-height: 0;
 }
-
-.hero-copy,
-.hero-visual,
-.bio,
-.skills,
-.experience-card,
-.project-copy,
-.education-card,
-.contact-info,
-.contact-form {
-  min-width: 0;
+.hero-visual {
+  min-height: 440px;
 }
-
-.profile-photo {
+.ai-core {
+  overflow: visible;
+}
+.ai-core .profile-photo {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 28%;
   border-radius: 50%;
+  overflow: hidden;
 }
-
-.project-image {
-  min-width: 0;
+.ai-core .profile-photo:hover {
+  transform: scale(1.04);
 }
-
-.project-shot {
-  max-width: none;
+.section#about {
+  padding-top: 54px;
 }
-
-.contact-links a,
-.site-footer a {
-  overflow-wrap: anywhere;
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-
 @media (max-width: 900px) {
-  .desktop-nav {
-    display: none;
+  .hero {
+    padding-top: calc(var(--header-height) + 30px);
+    padding-bottom: 16px;
   }
-
-  .mobile-actions {
-    display: flex;
-  }
-
   .hero-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
+    gap: 22px;
   }
-
   .hero-visual {
-    order: -1;
-    width: 100%;
-    min-height: clamp(280px, 52vw, 390px);
+    min-height: 340px;
   }
-
-  .about-grid,
-  .contact-grid,
-  .experience-row {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .project-card {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .project-image {
-    min-height: clamp(170px, 48vw, 250px);
+  .section#about {
+    padding-top: 42px;
   }
 }
-
 @media (max-width: 650px) {
-  .container {
-    width: min(calc(100% - 28px), var(--container));
-  }
-
   .hero {
-    min-height: auto;
-    padding: calc(var(--header-height) + 28px) 0 58px;
+    padding-top: 100px;
+    padding-bottom: 8px;
   }
-
   .hero-grid {
     min-height: 0;
+    gap: 8px;
   }
-
-  .hero h1 {
-    font-size: clamp(2.35rem, 11vw, 3.6rem);
-    line-height: 1.04;
-    letter-spacing: -1.8px;
-    overflow-wrap: anywhere;
-  }
-
-  .role-line {
-    justify-content: center;
-    gap: 7px;
-    font-size: .94rem;
-  }
-
-  .hero-copy > p {
-    font-size: .96rem;
-    line-height: 1.7;
-  }
-
-  .hero-actions {
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .hero-actions .button {
-    max-width: 100%;
-  }
-
   .hero-visual {
-    min-height: clamp(260px, 78vw, 340px);
-    overflow: hidden;
+    min-height: 285px;
   }
-
-  .visual-grid,
-  .orbit-two {
-    width: min(88vw, 320px);
-    height: min(88vw, 320px);
+  .visual-grid, .orbit-two {
+    width: min(300px, 88vw);
+    height: min(300px, 88vw);
   }
-
   .orbit-one {
-    width: min(72vw, 260px);
-    height: min(72vw, 260px);
+    width: min(245px, 72vw);
+    height: min(245px, 72vw);
   }
-
   .ai-core {
-    width: clamp(150px, 48vw, 190px);
-    height: clamp(150px, 48vw, 190px);
+    width: 190px;
+    height: 190px;
     padding: 7px;
   }
-
-  .floating-chip {
-    padding: 6px 9px;
-    font-size: .68rem;
-  }
-
-  .chip-one {
-    top: 10%;
-    right: 4%;
-  }
-
-  .chip-two {
-    right: 3%;
-    bottom: 15%;
-  }
-
-  .chip-three {
-    left: 4%;
-    bottom: 9%;
-  }
-
-  .section {
-    padding: 68px 0;
-  }
-
-  .section-heading {
-    margin-bottom: 34px;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 9px;
-  }
-
-  .skill-card {
-    min-width: 0;
-    min-height: 94px;
-    padding: 12px 6px;
-  }
-
-  .skill-card span {
-    font-size: .72rem;
-    overflow-wrap: anywhere;
-  }
-
-  .experience-card,
-  .project-copy,
-  .education-card,
-  .contact-form {
-    padding: 20px;
-  }
-
-  .card-title {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .project-card {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .project-image {
-    min-height: 190px;
-  }
-
-  .project-actions {
-    align-items: stretch;
-  }
-
-  .project-actions .button {
-    flex: 1 1 140px;
-  }
-
-  .education-grid,
-  .footer-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .contact-grid {
-    gap: 30px;
-  }
-
-  .cookie-banner {
-    left: max(12px, env(safe-area-inset-left));
-    right: max(12px, env(safe-area-inset-right));
-    bottom: max(12px, env(safe-area-inset-bottom));
-    max-width: none;
-  }
-
-  .scroll-top {
-    right: 14px;
-    bottom: 14px;
-  }
-}
-
-@media (max-width: 380px) {
-  .brand {
-    font-size: .94rem;
-  }
-
-  .brand-mark {
-    width: 34px;
-    height: 34px;
-  }
-
-  .mobile-actions {
-    gap: 6px;
-  }
-
-  .theme-toggle,
-  .menu-toggle {
-    width: 38px;
-    height: 38px;
-  }
-
-  .hero-actions {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-actions .button {
-    width: 100%;
-  }
-
-  .experience-card,
-  .project-copy,
-  .education-card,
-  .contact-form {
-    padding: 17px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
+  .section#about {
+    padding-top: 30px;
   }
 }
