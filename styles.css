@@ -41,6 +41,7 @@ html[data-theme="light"] {
 }
 
 html {
+  font-size: 110%;
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
 }
@@ -107,13 +108,12 @@ img {
   height: var(--header-height);
   z-index: 1000;
   border-bottom: 1px solid transparent;
-  background: rgba(11,16,24,.55);
-  backdrop-filter: blur(16px);
+  background: rgba(11,16,24,.94);
   transition: .25s ease;
 }
 
 html[data-theme="light"] .site-header {
-  background: rgba(245,248,250,.72);
+  background: rgba(245,248,250,.95);
 }
 
 .site-header.scrolled {
@@ -299,8 +299,8 @@ html[data-theme="light"] .site-header {
   max-width: 750px;
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(3rem, 6vw, 5.3rem);
-  line-height: .98;
-  letter-spacing: -3px;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
   margin-bottom: 22px;
 }
 
@@ -438,8 +438,7 @@ html[data-theme="light"] .site-header {
   border: 1px solid var(--border);
   border-radius: 10px;
   color: var(--text);
-  background: color-mix(in srgb, var(--surface) 88%, transparent);
-  backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
   box-shadow: var(--shadow);
   font-size: .82rem;
   font-weight: 700;
@@ -469,8 +468,8 @@ html[data-theme="light"] .site-header {
 .section-heading h2 {
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.1;
-  letter-spacing: -1.3px;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
   margin-bottom: 14px;
 }
 
@@ -697,13 +696,15 @@ html[data-theme="light"] .skill-card img[src*="simpleicons"] {
 
 .project-list {
   display: grid;
-  gap: 25px;
+  gap: 20px;
+  max-width: 1060px;
+  margin-inline: auto;
 }
 
 .project-card {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  min-height: 285px;
+  grid-template-columns: 240px 1fr;
+  min-height: 185px;
   overflow: hidden;
   transition: transform .25s ease, border-color .25s ease;
 }
@@ -714,7 +715,7 @@ html[data-theme="light"] .skill-card img[src*="simpleicons"] {
 }
 
 .project-image {
-  min-height: 260px;
+  min-height: 165px;
   display: grid;
   place-items: center;
   background:
@@ -723,39 +724,44 @@ html[data-theme="light"] .skill-card img[src*="simpleicons"] {
 }
 
 .project-icon {
-  width: 95px;
-  height: 95px;
+  width: 78px;
+  height: 78px;
   display: grid;
   place-items: center;
   border: 1px solid rgba(25,183,165,.3);
-  border-radius: 25px;
+  border-radius: 20px;
   color: var(--accent);
   background: var(--accent-soft);
-  font-size: 2.5rem;
+  font-size: 2rem;
   transform: rotate(-4deg);
 }
 
 .project-copy {
-  padding: 32px;
+  padding: 20px 24px;
 }
 
 .project-copy h3 {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 1.55rem;
+  font-size: 1.3rem;
   margin-bottom: 4px;
 }
 
 .project-copy p {
-  max-width: 720px;
+  max-width: 620px;
   color: var(--muted);
-  margin-top: 18px;
+  margin-top: 10px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 
 .project-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 22px;
+  margin-top: 16px;
 }
 
 /* ================= EDUCATION ================= */
@@ -1218,7 +1224,7 @@ html[data-theme="light"] .skill-card img[src*="simpleicons"] {
 
   .hero h1 {
     font-size: clamp(2.65rem, 13vw, 4rem);
-    letter-spacing: -2px;
+    letter-spacing: -0.03em;
   }
 
   .hero-copy > p {
@@ -1398,34 +1404,23 @@ html[data-theme="light"] {
 
 body {
   background:
+    linear-gradient(rgba(148,163,184,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,163,184,.055) 1px, transparent 1px),
     radial-gradient(circle at 8% 8%, rgba(34,211,238,.09), transparent 25rem),
     radial-gradient(circle at 92% 25%, rgba(139,92,246,.10), transparent 28rem),
-    radial-gradient(circle at 50% 100%, rgba(59,130,246,.07), transparent 25rem),
+    radial-gradient(circle at 50% 100%, rgba(139,92,246,.07), transparent 25rem),
     var(--bg);
-}
-
-body::before {
-  opacity: .16;
-  background-image:
-    linear-gradient(rgba(148,163,184,.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148,163,184,.07) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: linear-gradient(to bottom, black, transparent 85%);
+  background-size: 60px 60px, 60px 60px, auto, auto, auto;
 }
 
 #scroll-progress {
-  background: linear-gradient(90deg, #22d3ee, #3b82f6, #8b5cf6, #ec4899);
+  background: linear-gradient(90deg, #22d3ee, #8b5cf6);
   box-shadow: 0 0 15px rgba(34,211,238,.65);
 }
 
 .brand-mark {
-  background: linear-gradient(135deg, #22d3ee, #3b82f6 50%, #8b5cf6);
+  background: linear-gradient(135deg, #22d3ee, #8b5cf6);
   box-shadow: 0 0 25px rgba(34,211,238,.25), 0 8px 25px rgba(139,92,246,.18);
-  animation: premiumLogoPulse 3s ease-in-out infinite;
-}
-
-@keyframes premiumLogoPulse {
-  50% { box-shadow: 0 0 38px rgba(34,211,238,.38), 0 8px 32px rgba(139,92,246,.25); }
 }
 
 .nav-links a::after {
@@ -1439,7 +1434,7 @@ body::before {
 }
 
 .button-primary {
-  background: linear-gradient(110deg, #06b6d4, #3b82f6 48%, #8b5cf6);
+  background: linear-gradient(110deg, #22d3ee, #8b5cf6);
   box-shadow: 0 10px 30px rgba(59,130,246,.22);
 }
 
@@ -1460,7 +1455,7 @@ body::before {
 }
 
 .hero h1 span {
-  background: linear-gradient(100deg, #22d3ee, #60a5fa 45%, #8b5cf6);
+  background: linear-gradient(100deg, #22d3ee, #8b5cf6);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1485,18 +1480,12 @@ body::before {
   border-radius: 50%;
   background: rgba(34,211,238,.07);
   filter: blur(70px);
-  animation: ambientFloat 6s ease-in-out infinite;
-}
-
-@keyframes ambientFloat {
-  50% { transform: translate(15px,-15px) scale(1.08); }
 }
 
 .visual-grid {
   background-image:
     linear-gradient(rgba(34,211,238,.13) 1px, transparent 1px),
     linear-gradient(90deg, rgba(34,211,238,.13) 1px, transparent 1px);
-  animation: gridFloat 8s ease-in-out infinite;
 }
 
 .ai-core {
@@ -1507,7 +1496,7 @@ body::before {
 }
 
 .profile-initials {
-  background: linear-gradient(135deg, #06b6d4, #2563eb 50%, #8b5cf6);
+  background: linear-gradient(135deg, #22d3ee, #8b5cf6);
   box-shadow: 0 0 35px rgba(34,211,238,.28), 0 0 70px rgba(139,92,246,.15);
 }
 
@@ -1520,14 +1509,12 @@ body::before {
 }
 
 .floating-chip {
-  background: rgba(15,23,42,.72);
-  backdrop-filter: blur(14px);
-  animation: chipFloat 4s ease-in-out infinite;
+  background: rgba(15,23,42,.92);
 }
 
 .chip-one { color: #22d3ee; }
-.chip-two { color: #a78bfa; animation-delay: .7s; }
-.chip-three { color: #60a5fa; animation-delay: 1.2s; }
+.chip-two { color: #a78bfa; }
+.chip-three { color: #8b5cf6; }
 
 .section-heading h2::after {
   background: linear-gradient(90deg, #22d3ee, #8b5cf6);
@@ -1535,10 +1522,13 @@ body::before {
 }
 
 .glass-card,
-.skill-card,
 .contact-form {
   background: linear-gradient(145deg, rgba(255,255,255,.035), transparent), var(--surface);
-  backdrop-filter: blur(16px);
+}
+
+/* Skills are numerous (20+); skip backdrop blur to save GPU compositing work */
+.skill-card {
+  background: linear-gradient(145deg, rgba(255,255,255,.035), transparent), var(--surface);
 }
 
 .skill-card:hover,
@@ -1627,7 +1617,7 @@ body::before {
 
 @media (max-width: 650px) {
   .hero h1 {
-    letter-spacing: -2px;
+    letter-spacing: -0.03em;
   }
 
   .ai-core {
@@ -1776,21 +1766,11 @@ html[data-theme="light"] .skill-card img[src*="simpleicons"] { filter: none; }
 }
 .skill-card:hover span { color: var(--c); opacity: 1; }
 
-/* ---------- Cursor spotlight on cards ---------- */
+/* ---------- Cards ---------- */
 .glass-card, .contact-form { position: relative; }
-.glass-card::after, .skill-card::after, .contact-form::after {
-  content: "";
-  position: absolute; inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  background: radial-gradient(260px circle at var(--mx,50%) var(--my,50%), rgba(34,211,238,.13), transparent 60%);
-  transition: opacity .3s ease;
-}
-.glass-card:hover::after, .skill-card:hover::after, .contact-form:hover::after { opacity: 1; }
 
 /* ---------- Projects: image ---------- */
-.project-card { grid-template-columns: 400px 1fr; }
+.project-card { grid-template-columns: 240px 1fr; }
 .project-card.reveal.visible:hover {
   transform: translateY(-6px);
   border-color: rgba(34,211,238,.4);
@@ -1814,7 +1794,6 @@ html[data-theme="light"] .skill-card img[src*="simpleicons"] { filter: none; }
 .project-card:hover .project-shot { transform: scale(1.08); }
 .project-card:hover .project-image::after { opacity: 0; }
 .project-image:has(.project-shot) .project-icon { display: none; }
-.project-icon { animation: coreFloat 4s ease-in-out infinite; }
 
 /* ---------- Misc animations ---------- */
 .floating-chip:hover { transform: scale(1.12); border-color: currentColor; }
@@ -1829,11 +1808,11 @@ html[data-theme="light"] .skill-card img[src*="simpleicons"] { filter: none; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1050px) {
-  .project-card { grid-template-columns: 300px 1fr; }
+  .project-card { grid-template-columns: 200px 1fr; }
 }
 @media (max-width: 900px) {
   .hero-visual { order: -1; min-height: 440px; }
-  .project-card { grid-template-columns: 220px 1fr; }
+  .project-card { grid-template-columns: 180px 1fr; }
 }
 @media (max-width: 650px) {
   .hero-visual { min-height: 360px; }
@@ -1842,7 +1821,7 @@ html[data-theme="light"] .skill-card img[src*="simpleicons"] { filter: none; }
   .ai-core { width: 210px; height: 210px; padding: 8px; }
   .profile-photo .profile-initials { font-size: 3.2rem; }
   .project-card { grid-template-columns: 1fr; }
-  .project-image { min-height: 200px; }
+  .project-image { min-height: 160px; }
   .skill-card { min-height: 100px; }
   .skill-card img, .skill-fa-icon, .skill-fallback { width: 42px; height: 42px; }
 }
@@ -1928,5 +1907,198 @@ html[data-theme="light"] .skill-card img[src*="simpleicons"] { filter: none; }
   }
   .section#about {
     padding-top: 30px;
+  }
+}
+
+
+/* =========================================================
+   UI UPGRADES: eyebrows, accessibility
+   ========================================================= */
+
+/* ---------- Accessibility ---------- */
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 3000;
+  padding: 10px 16px;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(110deg, #22d3ee, #8b5cf6);
+  font-weight: 700;
+  transform: translateY(-160%);
+  transition: transform .2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:where(a, button, input, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.theme-toggle,
+.menu-toggle,
+.socials a,
+.scroll-top {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* ---------- Section eyebrow labels ---------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  color: var(--accent);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--accent);
+}
+
+
+/* =========================================================
+   MOBILE FIX: stop layout viewport from expanding (zoom in/out)
+   Reveal animations, rotating orbits and wide decorations were
+   creating horizontal overflow. Mobile browsers then widened the
+   layout viewport to fit it, which looked like random zooming.
+   ========================================================= */
+
+html {
+  overflow-x: hidden;          /* fallback for older browsers */
+  overflow-x: clip;            /* clip without creating a scroll container */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+/* Grid children must be allowed to shrink below their content width */
+.about-grid > *,
+.contact-grid > *,
+.experience-row > *,
+.project-card > *,
+.footer-grid > *,
+.education-grid > * {
+  min-width: 0;
+}
+
+/* Keep the hero decorations inside the page bounds on small screens */
+.hero-visual {
+  max-width: 100%;
+}
+
+/* Prevent iOS Safari auto-zoom when focusing form fields */
+.form-row input,
+.form-row textarea,
+.contact-form input,
+.contact-form textarea {
+  font-size: max(16px, 1rem);
+}
+
+/* On phones/tablets animate vertically so elements never start
+   (or end) shifted outside the viewport horizontally. */
+@media (max-width: 900px) {
+  /* A later desktop rule was forcing 2 columns on mobile; restack it */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-visual {
+    order: -1;
+  }
+
+  .reveal-left,
+  .reveal-right {
+    transform: translateY(24px);
+  }
+
+  .reveal-left.visible,
+  .reveal-right.visible {
+    transform: translateY(0);
+  }
+}
+
+
+
+/* =========================================================
+   COMPACT SKILL CARDS (smaller boxes)
+   ========================================================= */
+.skills-grid {
+  gap: 10px;
+}
+
+.skill-card {
+  min-height: 84px;
+  padding: 10px 6px;
+  gap: 6px;
+  border-radius: 12px;
+}
+
+.skill-card img,
+.skill-fa-icon,
+.skill-fallback {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+
+.skill-card img {
+  padding: 8px;
+}
+
+.skill-fa-icon {
+  font-size: 1.15rem;
+}
+
+.skill-card span {
+  font-size: .72rem;
+}
+
+@media (max-width: 650px) {
+  .skills-grid {
+    gap: 8px;
+  }
+
+  .skill-card {
+    min-height: 76px;
+    padding: 8px 5px;
+    gap: 5px;
+  }
+
+  .skill-card img,
+  .skill-fa-icon,
+  .skill-fallback {
+    width: 31px;
+    height: 31px;
+    border-radius: 9px;
+  }
+
+  .skill-card img {
+    padding: 6px;
+  }
+
+  .skill-fa-icon {
+    font-size: 1rem;
+  }
+
+  .skill-card span {
+    font-size: .66rem;
   }
 }

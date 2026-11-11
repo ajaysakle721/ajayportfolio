@@ -1,4 +1,5 @@
 const root = document.documentElement;
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
 function setTheme(theme) {
   root.dataset.theme = theme;
@@ -11,6 +12,23 @@ function setTheme(theme) {
     .forEach((el) => {
       el.textContent = dark ? "☼" : "☾";
     });
+
+  document
+    .querySelectorAll("#theme-toggle, #theme-toggle-mobile")
+    .forEach((el) => {
+      el.setAttribute("aria-pressed", String(dark));
+      el.setAttribute(
+        "aria-label",
+        dark ? "Switch to light theme" : "Switch to dark theme"
+      );
+    });
+
+  if (themeColorMeta) {
+    themeColorMeta.setAttribute(
+      "content",
+      dark ? "#070b14" : "#f4f7fb"
+    );
+  }
 }
 
 setTheme(localStorage.getItem("theme") || "dark");
@@ -44,7 +62,8 @@ if (menuButton && menu) {
     const open = menu.classList.toggle("open");
 
     menuButton.classList.toggle("open", open);
-    menuButton.setAttribute("aria-expanded", open);
+    menuButton.setAttribute("aria-expanded", String(open));
+    menu.inert = !open;
   });
 
   menu.querySelectorAll("a").forEach((a) => {
@@ -53,6 +72,7 @@ if (menuButton && menu) {
       menu.classList.remove("open");
       menuButton.classList.remove("open");
       menuButton.setAttribute("aria-expanded", "false");
+      menu.inert = true;
 
       const href = a.getAttribute("href");
 
@@ -83,34 +103,48 @@ if (menuButton && menu) {
 }
 
 
-/* ================= SCROLL ================= */
+/* ================= SCROLL (single rAF-throttled handler) ================= */
 
-window.addEventListener(
-  "scroll",
-  () => {
+const scrollTopButton = document.querySelector("#scroll-top");
+const progress = document.querySelector("#scroll-progress");
 
-    if (header) {
-      header.classList.toggle("scrolled", scrollY > 50);
-    }
+let scrollTicking = false;
 
-    const scrollTop = document.querySelector("#scroll-top");
+function onScroll() {
 
-    if (scrollTop) {
-      scrollTop.classList.toggle(
-        "visible",
-        scrollY > 450
-      );
-    }
-  },
-  {
-    passive: true,
+  if (header) {
+    header.classList.toggle("scrolled", window.scrollY > 50);
   }
-);
+
+  if (scrollTopButton) {
+    scrollTopButton.classList.toggle("visible", window.scrollY > 450);
+  }
+
+  if (progress) {
+    const max =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    progress.style.width =
+      (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+  }
+
+  scrollTicking = false;
+}
+
+function requestScrollUpdate() {
+  if (!scrollTicking) {
+    scrollTicking = true;
+    requestAnimationFrame(onScroll);
+  }
+}
+
+window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+window.addEventListener("resize", requestScrollUpdate);
+
+onScroll();
 
 
 /* ================= SCROLL TOP ================= */
-
-const scrollTopButton = document.querySelector("#scroll-top");
 
 if (scrollTopButton) {
   scrollTopButton.addEventListener("click", () => {
@@ -419,48 +453,6 @@ if (typedEl) {
 }
 
 
-/* ================= SCROLL PROGRESS ================= */
-
-const progress =
-  document.querySelector("#scroll-progress");
-
-
-if (progress) {
-
-  const updateProgress = () => {
-
-    const max =
-      document.documentElement.scrollHeight -
-      innerHeight;
-
-    progress.style.width =
-      (
-        max > 0
-          ? (scrollY / max) * 100
-          : 0
-      ) + "%";
-  };
-
-
-  addEventListener(
-    "scroll",
-    updateProgress,
-    {
-      passive: true,
-    }
-  );
-
-
-  addEventListener(
-    "resize",
-    updateProgress
-  );
-
-
-  updateProgress();
-}
-
-
 /* ================= SKILL IMAGE FALLBACK ================= */
 
 const fallbackSkillImg = (img) => {
@@ -611,18 +603,11 @@ document.querySelectorAll(".button").forEach((btn) => {
 });
 
 
-/* ================= CARD SPOTLIGHT ================= */
+/* ================= CARD SPOTLIGHT (disabled) ================= */
+/* The moving green glow on pointer move was removed on purpose. */
 
-document
-  .querySelectorAll(".glass-card, .skill-card, .contact-form")
-  .forEach((card) => {
-    card.addEventListener(
-      "pointermove",
-      (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty("--mx", e.clientX - r.left + "px");
-        card.style.setProperty("--my", e.clientY - r.top + "px");
-      },
-      { passive: true }
-    );
-  });
+
+
+
+
+

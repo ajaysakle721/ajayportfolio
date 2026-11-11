@@ -11,7 +11,7 @@
   />
 
   <meta name="author" content="Ajay Sakle" />
-  <meta name="theme-color" content="#10141d" />
+  <meta name="theme-color" content="#070b14" id="theme-color" />
 
   <!-- Favicon -->
   <link
@@ -23,25 +23,40 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap"
     rel="stylesheet"
   />
 
   <!-- CSS -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Font Awesome -->
+  <!-- Above-the-fold hero image: load early -->
+  <link rel="preload" as="image" href="images/profile-opt.jpg" fetchpriority="high" />
+
+  <!-- Font Awesome (non-render-blocking) -->
   <link
-    rel="stylesheet"
+    rel="preload"
+    as="style"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    onload="this.onload=null;this.rel='stylesheet'"
   />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </noscript>
 
   <title>Ajay Sakle | Gen AI Engineer</title>
 </head>
 
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <div id="scroll-progress" aria-hidden="true"></div>
 
@@ -70,7 +85,8 @@
         <button
           class="theme-toggle"
           id="theme-toggle"
-          aria-label="Toggle theme"
+          aria-label="Switch to light theme"
+          aria-pressed="true"
         >
           <span id="theme-icon">☼</span>
         </button>
@@ -98,7 +114,8 @@
         <button
           class="theme-toggle"
           id="theme-toggle-mobile"
-          aria-label="Toggle theme"
+          aria-label="Switch to light theme"
+          aria-pressed="true"
         >
           <span id="theme-icon-mobile">☼</span>
         </button>
@@ -120,7 +137,7 @@
 
     <!-- Mobile Menu -->
 
-    <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu" id="mobile-menu" inert>
 
       <nav>
 
@@ -154,7 +171,7 @@
   </header>
 
 
-  <main>
+  <main id="main">
 
     <!-- ================= HERO ================= -->
 
@@ -225,7 +242,15 @@
 
           <div class="ai-core">
             <!-- Sirf profile photo display hogi -->
-            <img src="images/profile.jpeg" alt="Ajay Sakle" class="profile-photo" />
+            <img
+              src=" images/profile-opt.jpg.jpeg"
+              alt="Ajay Sakle"
+              class="profile-photo"
+              width="720"
+              height="661"
+              decoding="async"
+              fetchpriority="high"
+            />
           </div>
 
           <div class="floating-chip chip-one">
@@ -258,6 +283,8 @@
       <div class="container">
 
         <div class="section-heading reveal">
+
+          <span class="eyebrow">01 — About</span>
 
           <h2>About Me</h2>
 
@@ -326,7 +353,7 @@
                 <span>SQL</span>
               </div>
               <div class="skill-card" style="--c:#F7931E">
-                <img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="Machine Learning" />
+                <img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="Machine Learning" loading="lazy" decoding="async" />
                 <span>Machine Learning</span>
               </div>
               <div class="skill-card" style="--c:#EC4899">
@@ -350,7 +377,7 @@
                 <span>RAG</span>
               </div>
               <div class="skill-card" style="--c:#2DD4BF">
-                <img src="https://cdn.simpleicons.org/langchain/2DD4BF" alt="LangChain" />
+                <img src="https://cdn.simpleicons.org/langchain/2DD4BF" alt="LangChain" loading="lazy" decoding="async" />
                 <span>LangChain</span>
               </div>
               <div class="skill-card" style="--c:#60A5FA">
@@ -358,19 +385,19 @@
                 <span>LangGraph</span>
               </div>
               <div class="skill-card" style="--c:#FFD21E">
-                <img src="https://cdn.simpleicons.org/huggingface/FFD21E" alt="Hugging Face" />
+                <img src="https://cdn.simpleicons.org/huggingface/FFD21E" alt="Hugging Face" loading="lazy" decoding="async" />
                 <span>Hugging Face</span>
               </div>
               <div class="skill-card" style="--c:#14B8A6">
-                <img src="https://cdn.simpleicons.org/fastapi/14B8A6" alt="FastAPI" />
+                <img src="https://cdn.simpleicons.org/fastapi/14B8A6" alt="FastAPI" loading="lazy" decoding="async" />
                 <span>FastAPI</span>
               </div>
               <div class="skill-card" style="--c:#9CA3AF">
-                <img src="https://cdn.simpleicons.org/flask/9CA3AF" alt="Flask" />
+                <img src="https://cdn.simpleicons.org/flask/9CA3AF" alt="Flask" loading="lazy" decoding="async" />
                 <span>Flask</span>
               </div>
               <div class="skill-card" style="--c:#FF4B4B">
-                <img src="https://cdn.simpleicons.org/streamlit/FF4B4B" alt="Streamlit" />
+                <img src="https://cdn.simpleicons.org/streamlit/FF4B4B" alt="Streamlit" loading="lazy" decoding="async" />
                 <span>Streamlit</span>
               </div>
               <div class="skill-card" style="--c:#2496ED">
@@ -386,7 +413,7 @@
                 <span>GitHub</span>
               </div>
               <div class="skill-card" style="--c:#2088FF">
-                <img src="https://cdn.simpleicons.org/githubactions/2088FF" alt="GitHub Actions" />
+                <img src="https://cdn.simpleicons.org/githubactions/2088FF" alt="GitHub Actions" loading="lazy" decoding="async" />
                 <span>GitHub Actions</span>
               </div>
               <div class="skill-card" style="--c:#F59E0B">
@@ -415,6 +442,8 @@
       <div class="container">
 
         <div class="section-heading reveal">
+
+          <span class="eyebrow">02 — Experience</span>
 
           <h2>Work Experience</h2>
 
@@ -516,6 +545,8 @@
 
         <div class="section-heading reveal">
 
+          <span class="eyebrow">03 — Projects</span>
+
           <h2>Projects</h2>
 
           <p>
@@ -535,7 +566,7 @@
 
             <div class="project-image">
 
-              <img class="project-shot" src="images/rag-assistant.jpg" alt="RAG Knowledge Assistant screenshot" loading="lazy" onerror="this.remove()" />
+              <img class="project-shot" src=" images/rag-assistant-opt.jpg.jpeg" alt="RAG Knowledge Assistant screenshot" width="800" height="571" loading="lazy" decoding="async" onerror="this.remove()" />
 
               <div class="project-icon">
                 <i class="fa-solid fa-book-open"></i>
@@ -601,7 +632,7 @@
 
             <div class="project-image">
 
-              <img class="project-shot" src="images/agentic-chatbot.jpg" alt="Agentic Chatbot screenshot" loading="lazy" onerror="this.remove()" />
+              <img class="project-shot" src=" images/agentic-chatbot-opt.jpg.jpeg" alt="Agentic Chatbot screenshot" width="800" height="567" loading="lazy" decoding="async" onerror="this.remove()" />
 
               <div class="project-icon">
                 <i class="fa-solid fa-robot"></i>
@@ -634,58 +665,12 @@
               <div class="project-actions">
 
                 <a
-                  class="button button-outline"
-                  href="https://github.com/Ajaysakle721"
-                  target="_blank"
-                  rel="noreferrer"
+                  class="button button-primary"
+                  href="#"
                 >
-                  <i class="fa-brands fa-github"></i>
-                  View Code
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Live Demo
                 </a>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- AI HEALTH PROJECT -->
-
-          <article class="project-card glass-card reveal">
-
-            <div class="project-image">
-
-              <img class="project-shot" src="images/health-portal.jpg" alt="Smart Health Report Portal screenshot" loading="lazy" onerror="this.remove()" />
-
-              <div class="project-icon">
-                <i class="fa-solid fa-file-medical"></i>
-              </div>
-
-            </div>
-
-            <div class="project-copy">
-
-              <h3>
-                Smart Health Report Portal
-              </h3>
-
-              <div class="tag-list">
-
-                <span>Python</span>
-                <span>AI</span>
-                <span>Web App</span>
-                <span>Dashboard</span>
-
-              </div>
-
-              <p>
-                Web-based health report and record portal designed to
-                organize health information and provide a simple
-                dashboard experience.
-              </p>
-
-              <div class="project-actions">
 
                 <a
                   class="button button-outline"
@@ -703,6 +688,8 @@
 
           </article>
 
+
+          
         </div>
 
       </div>
@@ -717,6 +704,8 @@
       <div class="container">
 
         <div class="section-heading reveal">
+
+          <span class="eyebrow">04 — Education</span>
 
           <h2>Education</h2>
 
@@ -784,6 +773,8 @@
       <div class="container">
 
         <div class="section-heading reveal">
+
+          <span class="eyebrow">05 — Contact</span>
 
           <h2>Contact Me</h2>
 
